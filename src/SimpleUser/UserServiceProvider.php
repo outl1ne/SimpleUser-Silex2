@@ -84,6 +84,9 @@ class UserServiceProvider implements
             // Override table names, if necessary.
             'userTableName' => 'users',
             'userCustomFieldsTableName' => 'user_custom_fields',
+            
+            //Override avaiable roles, if it nessesary.
+            'userAvailableRoles' => array('ROLE_ADMIN','ROLE_USER'),
         );
 
         // Initialize $app['user.options'].
