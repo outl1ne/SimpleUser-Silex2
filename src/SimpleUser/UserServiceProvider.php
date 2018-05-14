@@ -300,25 +300,25 @@ class UserServiceProvider implements
             });
 
         $controllers->get('/list', 'user.controller:listAction')
-            ->bind('user.list');
+            ->bind('user.list')->requireHttps();
 
         $controllers->method('GET|POST')->match('/register', 'user.controller:registerAction')
-            ->bind('user.register');
+            ->bind('user.register')->requireHttps();
 
         $controllers->get('/confirm-email/{token}', 'user.controller:confirmEmailAction')
-            ->bind('user.confirm-email');
+            ->bind('user.confirm-email')->requireHttps();
 
         $controllers->post('/resend-confirmation', 'user.controller:resendConfirmationAction')
-            ->bind('user.resend-confirmation');
+            ->bind('user.resend-confirmation')->requireHttps();
 
         $controllers->get('/login', 'user.controller:loginAction')
-            ->bind('user.login');
+            ->bind('user.login')->requireHttps();
 
         $controllers->method('GET|POST')->match('/forgot-password', 'user.controller:forgotPasswordAction')
-            ->bind('user.forgot-password');
+            ->bind('user.forgot-password')->requireHttps();
 
         $controllers->get('/reset-password/{token}', 'user.controller:resetPasswordAction')
-            ->bind('user.reset-password');
+            ->bind('user.reset-password')->requireHttps();
 
         // login_check and logout are dummy routes so we can use the names.
         // The security provider should intercept these, so no controller is needed.
