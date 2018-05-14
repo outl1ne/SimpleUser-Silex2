@@ -300,32 +300,32 @@ class UserServiceProvider implements
             });
 
         $controllers->get('/list', 'user.controller:listAction')
-            ->bind('user.list')->requireHttps();
+            ->bind('user.list');
 
         $controllers->method('GET|POST')->match('/register', 'user.controller:registerAction')
-            ->bind('user.register')->requireHttps();
+            ->bind('user.register');
 
         $controllers->get('/confirm-email/{token}', 'user.controller:confirmEmailAction')
-            ->bind('user.confirm-email')->requireHttps();
+            ->bind('user.confirm-email');
 
         $controllers->post('/resend-confirmation', 'user.controller:resendConfirmationAction')
-            ->bind('user.resend-confirmation')->requireHttps();
+            ->bind('user.resend-confirmation');
 
         $controllers->get('/login', 'user.controller:loginAction')
-            ->bind('user.login')->requireHttps();
+            ->bind('user.login');
 
         $controllers->method('GET|POST')->match('/forgot-password', 'user.controller:forgotPasswordAction')
-            ->bind('user.forgot-password')->requireHttps();
+            ->bind('user.forgot-password');
 
         $controllers->get('/reset-password/{token}', 'user.controller:resetPasswordAction')
-            ->bind('user.reset-password')->requireHttps();
+            ->bind('user.reset-password');
 
         // login_check and logout are dummy routes so we can use the names.
         // The security provider should intercept these, so no controller is needed.
         $controllers->method('GET|POST')->match('/login_check', function() {})
-            ->bind('user.login_check')->requireHttps();
+            ->bind('user.login_check');
         $controllers->get('/logout', function() {})
-            ->bind('user.logout')->requireHttps();
+            ->bind('user.logout');
 
         return $controllers;
     }
