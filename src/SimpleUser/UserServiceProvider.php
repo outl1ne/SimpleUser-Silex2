@@ -323,9 +323,9 @@ class UserServiceProvider implements
         // login_check and logout are dummy routes so we can use the names.
         // The security provider should intercept these, so no controller is needed.
         $controllers->method('GET|POST')->match('/login_check', function() {})
-            ->bind('user.login_check');
+            ->bind('user.login_check')->requireHttps();
         $controllers->get('/logout', function() {})
-            ->bind('user.logout');
+            ->bind('user.logout')->requireHttps();
 
         return $controllers;
     }
